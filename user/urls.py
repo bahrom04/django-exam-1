@@ -1,8 +1,9 @@
-# from django.urls import path
-# from .views import 
+from django.urls import path
+from . import views
 
-# urlpatterns = [
-#     path('topic/', TopicListView.as_view(), name='topic'),
-#     path('lesson/', LessonListView.as_view(), name='lesson'),
-#     path('<slug:user>/review/', UserLessonRewiewView.as_view(), name='userreview'),
-# ]
+urlpatterns = [
+    path('', views.index, name='home'),
+    path('login/', views.user_login, name='login'),
+    path('signup/', views.user_signup, name='signup'),
+    path('logout/', views.user_logout, name='logout'),
+]

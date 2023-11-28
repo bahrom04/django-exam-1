@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Topic, Lesson, UserLessonRewiew
+from .models import Product, Lesson, UserLessonRewiew
 
 
-class TopicSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Topic
+        model = Product
         fields = '__all__'
 
 

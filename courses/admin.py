@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Topic, Lesson, UserLessonRewiew
+from .models import Product, Lesson, UserLessonRewiew
 
 
-admin.site.register(Topic)
+admin.site.register(Product)
 admin.site.register(Lesson)
 admin.site.register(UserLessonRewiew)

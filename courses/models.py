@@ -1,15 +1,18 @@
 from django.db import models
-from user.models import User
+# from user.models import 
 from common.models import BaseModel
+from django.contrib.auth import get_user_model
+
+CustomUser = get_user_model()
 
 
-class Topic(BaseModel):
+class Product(BaseModel):
     title = models.CharField(max_length=255)
     description = models.TextField()
 
     class Meta:
-        verbose_name = 'Topic'
-        verbose_name_plural = 'Topics'
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
 
     def __str__(self):
         return self.title
@@ -23,7 +26,7 @@ class Lesson(BaseModel):
     duration    = models.IntegerField()
     price       = models.IntegerField()
 
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    topic = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
     class Meta:
@@ -36,7 +39,7 @@ class Lesson(BaseModel):
 
 # User progress
 class UserLessonRewiew(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     video_lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     last_watched = models.DateTimeField(blank=True, null=True)
     is_finished = models.BooleanField(default=False)
@@ -46,6 +49,6 @@ class UserLessonRewiew(BaseModel):
         verbose_name_plural = 'UserRewiews'
 
     def __str__(self):
-        return f"{self.user.username} - {self.video_lesson.title}"
+        return f"{self.user} - {self.video_lesson.title}"
 
 

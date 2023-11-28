@@ -2,7 +2,7 @@ from django.db import models
 from common.models import BaseModel
 
 
-class User(BaseModel):
+class CustomUser(BaseModel):
     username     = models.CharField(max_length=255)
     password     = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
